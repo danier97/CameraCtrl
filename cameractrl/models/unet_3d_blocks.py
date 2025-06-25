@@ -12,7 +12,7 @@ from diffusers.models.unet_3d_blocks import (
     UpBlockSpatioTemporal,
 )
 
-from cameractrl.models.transformer_temporal import TransformerSpatioTemporalModelPoseCond
+from .transformer_temporal import TransformerSpatioTemporalModelPoseCond
 
 
 def get_down_block(

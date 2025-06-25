@@ -6,7 +6,7 @@ from diffusers.models.transformer_temporal import TransformerTemporalModelOutput
 from diffusers.models.attention import BasicTransformerBlock
 from diffusers.models.embeddings import TimestepEmbedding, Timesteps
 from diffusers.models.resnet import AlphaBlender
-from cameractrl.models.attention import TemporalPoseCondTransformerBlock
+from .attention import TemporalPoseCondTransformerBlock
 
 
 class TransformerSpatioTemporalModelPoseCond(nn.Module):

@@ -21,8 +21,8 @@ from diffusers.pipelines.stable_video_diffusion.pipeline_stable_video_diffusion 
     StableVideoDiffusionPipelineOutput
 )
 
-from cameractrl.models.pose_adaptor import CameraPoseEncoder
-from cameractrl.models.unet import UNetSpatioTemporalConditionModelPoseCond
+from ..models.pose_adaptor import CameraPoseEncoder
+from ..models.unet import UNetSpatioTemporalConditionModelPoseCond
 
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name

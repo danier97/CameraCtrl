@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 class CameraPoseVisualizer:
     def __init__(self, xlim, ylim, zlim):
-        self.fig = plt.figure(figsize=(18, 7))
+        self.fig = plt.figure(figsize=(7, 7))
         self.ax = self.fig.add_subplot(projection='3d')
         self.plotly_data = None  # plotly data traces
         self.ax.set_aspect("auto")

@@ -13,20 +13,20 @@ from diffusers.models.embeddings import TimestepEmbedding, Timesteps
 from diffusers.loaders import UNet2DConditionLoadersMixin
 from diffusers.models.unet_spatio_temporal_condition import UNetSpatioTemporalConditionOutput
 
-from cameractrl.models.unet_3d_blocks import (
+from .unet_3d_blocks import (
     get_down_block,
     get_up_block,
     UNetMidBlockSpatioTemporalPoseCond
 )
-from cameractrl.models.attention_processor import XFormersAttnProcessor as CustomizedXFormerAttnProcessor
-from cameractrl.models.attention_processor import PoseAdaptorXFormersAttnProcessor
+from .attention_processor import XFormersAttnProcessor as CustomizedXFormerAttnProcessor
+from .attention_processor import PoseAdaptorXFormersAttnProcessor
 
 # if hasattr(F, "scaled_dot_product_attention"):
 #     from cameractrl.models.attention_processor import PoseAdaptorAttnProcessor2_0 as PoseAdaptorAttnProcessor
 #     from cameractrl.models.attention_processor import AttnProcessor2_0 as CustomizedAttnProcessor
 # else:
-from cameractrl.models.attention_processor import PoseAdaptorAttnProcessor
-from cameractrl.models.attention_processor import AttnProcessor as CustomizedAttnProcessor
+from .attention_processor import PoseAdaptorAttnProcessor
+from .attention_processor import AttnProcessor as CustomizedAttnProcessor
 
 class UNetSpatioTemporalConditionModelPoseCond(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin):
     r"""

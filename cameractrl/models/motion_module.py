@@ -9,7 +9,7 @@ from diffusers.models.attention_processor import Attention
 from diffusers.models.attention import FeedForward
 
 from typing import Dict, Any
-from cameractrl.models.attention_processor import PoseAdaptorAttnProcessor
+from .attention_processor import PoseAdaptorAttnProcessor
 
 from einops import rearrange
 import math

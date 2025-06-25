@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from einops import rearrange
 from typing import List, Tuple
-from cameractrl.models.motion_module import TemporalTransformerBlock
+from .motion_module import TemporalTransformerBlock
 
 
 def get_parameter_dtype(parameter: torch.nn.Module):

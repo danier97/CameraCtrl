@@ -3,7 +3,7 @@ import json
 import os
 import os.path as osp
 from tqdm import tqdm
-from moviepy.editor import VideoFileClip
+from moviepy import VideoFileClip
 import imageio
 from decord import VideoReader
 
