@@ -79,7 +79,7 @@ def _cached_log_stream(filename):
     return io
 
 @functools.lru_cache()
-def setup_logger(output, distributed_rank, color=True, name='AnimateDiff', abbrev_name=None):
+def setup_logger(output, distributed_rank, color=True, name='CameraCtrl', abbrev_name=None):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     logger.propagate = False

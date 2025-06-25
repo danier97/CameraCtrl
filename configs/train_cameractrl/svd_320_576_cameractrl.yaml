@@ -1,5 +1,5 @@
 output_dir: "output/cameractrl_model"
-pretrained_model_path: "[replace with SVD root path]"
+pretrained_model_path: "stabilityai/stable-video-diffusion-img2vid"
 unet_subfolder: "unet"
 down_block_types: ['CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'DownBlockSpatioTemporal']
 up_block_types: ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporalPoseCond', 'CrossAttnUpBlockSpatioTemporalPoseCond', 'CrossAttnUpBlockSpatioTemporalPoseCond']
