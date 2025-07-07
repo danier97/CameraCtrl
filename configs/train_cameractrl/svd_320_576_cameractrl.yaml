@@ -1,4 +1,4 @@
-output_dir: "output/cameractrl_model"
+output_dir: "train_results/cameractrl"
 pretrained_model_path: "stabilityai/stable-video-diffusion-img2vid"
 unet_subfolder: "unet"
 down_block_types: ['CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'CrossAttnDownBlockSpatioTemporalPoseCond', 'DownBlockSpatioTemporal']

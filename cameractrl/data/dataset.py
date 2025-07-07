@@ -187,17 +187,17 @@ class RealEstate10KPose(Dataset):
     def __init__(
             self,
             root_path,
-            annotation_json,
-            sample_stride=4,
+            annotation_json='annotations/test.json',
+            sample_stride=8,
             minimum_sample_stride=1,
-            sample_n_frames=16,
-            relative_pose=False,
-            zero_t_first_frame=False,
-            sample_size=[256, 384],
-            rescale_fxy=False,
+            sample_n_frames=14,
+            relative_pose=True,
+            zero_t_first_frame=True,
+            sample_size=[320, 576],
+            rescale_fxy=True,
             shuffle_frames=False,
             use_flip=False,
-            return_clip_name=False,
+            return_clip_name=True,
     ):
         self.root_path = root_path
         self.relative_pose = relative_pose

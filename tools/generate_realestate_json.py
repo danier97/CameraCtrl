@@ -26,13 +26,18 @@ if __name__ == '__main__':
     captions = {k: v[0] for k, v in captions.items()}
     all_results = []
     for clip_path, caption in tqdm(captions.items()):
-        clip_path = '/'.join(clip_path.split('/')[-2:])
-        clip_name = clip_path.split('/')[-1].replace(args.video_suffix, '')
+        clip_name = clip_path.replace(args.video_suffix, '')
+        pose_file = osp.join(args.pose_folder, clip_name + args.pose_suffix)
+        if not osp.exists(osp.join(save_root, pose_file)):
+            continue
+
+        with open(osp.join(save_root, pose_file), 'r') as f:
+            lines = f.readlines()
+        video_name = lines[0].strip().split('=')[-1]
+        clip_path = f'{video_name}/{clip_path}'
+
         clip_relative_path = osp.join(args.video_folder, clip_path)
         if not osp.exists(osp.join(save_root, clip_relative_path)):
-            continue
-        pose_file = args.pose_folder + '/' + clip_name + args.pose_suffix
-        if not osp.exists(osp.join(save_root, pose_file)):
             continue
 
         all_results.append({"clip_name": clip_name, "clip_path": clip_relative_path,
