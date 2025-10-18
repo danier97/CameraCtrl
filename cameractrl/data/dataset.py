@@ -208,6 +208,7 @@ class RealEstate10KPose(Dataset):
         self.return_clip_name = return_clip_name
 
         self.dataset = json.load(open(os.path.join(root_path, annotation_json), 'r'))
+        # self.dataset = [data for data in self.dataset if 'XDj-cBQKGLY' in data['clip_path']] # Debug
         self.length = len(self.dataset)
 
         sample_size = tuple(sample_size) if not isinstance(sample_size, int) else (sample_size, sample_size)
@@ -322,7 +323,7 @@ class RealEstate10KPose(Dataset):
         plucker_embedding = ray_condition(intrinsics, c2w, self.sample_size[0], self.sample_size[1], device='cpu',
                                           flip_flag=flip_flag)[0].permute(0, 3, 1, 2).contiguous()
 
-        return pixel_values, condition_image, plucker_embedding, video_caption, flip_flag, clip_name
+        return pixel_values, condition_image, plucker_embedding, video_caption, flip_flag, clip_name, c2w.squeeze(0), intrinsics.squeeze(0)
 
     def __len__(self):
         return self.length
@@ -330,7 +331,7 @@ class RealEstate10KPose(Dataset):
     def __getitem__(self, idx):
         while True:
             try:
-                video, condition_image, plucker_embedding, video_caption, flip_flag, clip_name = self.get_batch(idx)
+                video, condition_image, plucker_embedding, video_caption, flip_flag, clip_name, c2w, intrinsics = self.get_batch(idx)
                 break
 
             except Exception as e:
@@ -347,9 +348,9 @@ class RealEstate10KPose(Dataset):
         for transform in self.pixel_transforms:
             condition_image = transform(condition_image)
         if self.return_clip_name:
-            sample = dict(pixel_values=video, condition_image=condition_image, plucker_embedding=plucker_embedding, video_caption=video_caption, clip_name=clip_name)
+            sample = dict(pixel_values=video, condition_image=condition_image, plucker_embedding=plucker_embedding, video_caption=video_caption, clip_name=clip_name, c2w=c2w, intrinsics=intrinsics)
         else:
-            sample = dict(pixel_values=video, condition_image=condition_image, plucker_embedding=plucker_embedding, video_caption=video_caption)
+            sample = dict(pixel_values=video, condition_image=condition_image, plucker_embedding=plucker_embedding, video_caption=video_caption, c2w=c2w, intrinsics=intrinsics)
 
         return sample
 
